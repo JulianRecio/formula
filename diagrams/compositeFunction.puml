@@ -1,0 +1,126 @@
+@startuml
+
+interface Function{
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class Variable{
+    -var: String
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class Power{
+    -functionA: Function
+    -functionB: Function
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class Root{
+    -functionA: Function
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class Multiplication{
+    -functionA: Function
+    -functionB: Function
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class Division{
+    -functionA: Function
+    -functionB: Function
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class Addition{
+    -functionA: Function
+    -functionB: Function
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class Subtraction{
+    -functionA: Function
+    -functionB: Function
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class CalculateAbsolute{
+    -function: Function
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+class Association{
+    -function: Function
+    +evaluate(Map<String,Double> map): Double
+    +evaluate(): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
+
+
+
+
+CalculateAbsolute .u.|> Function
+Power .u.|> Function
+Root .u.|> Function
+Multiplication .u.|> Function
+Division .u.|> Function
+Addition ..|> Function
+Subtraction ..|> Function
+Variable ..|> Function
+Association ..|> Function
+CalculateAbsolute *-- Function
+Power *-- Function
+Root *-- Function
+Multiplication *-- Function
+Division *-- Function
+Addition *-- Function
+Subtraction *-- Function
+
+
+/'
+    --|> herencia
+    *-- composición
+    o-- agregación
+    --> asosiación
+    ..> dependencia
+    <|.. realización/implementación
+'/
+@enduml
