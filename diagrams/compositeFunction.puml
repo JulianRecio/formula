@@ -2,7 +2,6 @@
 
 interface Function{
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -11,7 +10,6 @@ interface Function{
 class Variable{
     -var: String
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -21,7 +19,6 @@ class Power{
     -functionA: Function
     -functionB: Function
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -30,7 +27,6 @@ class Power{
 class Root{
     -functionA: Function
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -40,7 +36,6 @@ class Multiplication{
     -functionA: Function
     -functionB: Function
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -50,7 +45,6 @@ class Division{
     -functionA: Function
     -functionB: Function
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -60,7 +54,6 @@ class Addition{
     -functionA: Function
     -functionB: Function
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -70,7 +63,6 @@ class Subtraction{
     -functionA: Function
     -functionB: Function
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -79,7 +71,6 @@ class Subtraction{
 class CalculateAbsolute{
     -function: Function
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String
@@ -88,7 +79,6 @@ class CalculateAbsolute{
 class Association{
     -function: Function
     +evaluate(Map<String,Double> map): Double
-    +evaluate(): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
     +print():  String

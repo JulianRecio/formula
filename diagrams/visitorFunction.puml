@@ -1,0 +1,153 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+interface VisitableFunction{
+    ~ acceptVisit(visitor: visitor: Visitor<T>): T
+}
+
+class Variable{
+    -var: String
+    +getVarName(): String
+    +accept(visitor: Visitor<T>): T
+}
+
+class Power{
+    -functionA: VisitableFunction
+    -functionB: VisitableFunction
+    +getFunctionA(): VisitableFunction
+    +getFunctionB(): VisitableFunction
+    +accept(visitor: Visitor<T>): T
+}
+
+class Root{
+    -functionA: VisitableFunction
+    +getFunctionA(): VisitableFunction
+    +accept(visitor: Visitor<T>): T
+}
+
+class Multiplication{
+    -functionA: VisitableFunction
+    -functionB: VisitableFunction
+    +getFunctionA(): VisitableFunction
+    +getFunctionB(): VisitableFunction
+    +accept(visitor: Visitor<T>): T
+}
+
+class Division{
+    -functionA: VisitableFunction
+    -functionB: VisitableFunction
+    +getFunctionA(): VisitableFunction
+    +getFunctionB(): VisitableFunction
+    +accept(visitor: Visitor<T>): T
+}
+
+class Addition{
+    -functionA: VisitableFunction
+    -functionB: VisitableFunction
+    +getFunctionA(): VisitableFunction
+    +getFunctionB(): VisitableFunction
+    +accept(visitor: Visitor<T>): T
+}
+
+class Subtraction{
+    -functionA: VisitableFunction
+    -functionB: VisitableFunction
+    +getFunctionA(): VisitableFunction
+    +getFunctionB(): VisitableFunction
+    +accept(visitor: Visitor<T>): T
+}
+
+class CalculateAbsolute{
+    -function: VisitableFunction
+    +getFunction(): VisitableFunction
+    +accept(visitor: Visitor<T>): T
+}
+
+class Association{
+    -function: VisitableFunction
+    +getFunction(): VisitableFunction
+    +accept(visitor: Visitor<T>): T
+}
+
+interface Visitor{
+    ~visit(power: Power): T
+    ~visit(root: Root): T
+    ~visit(multiplication: Multiplication): T
+    ~visit(division: Division): T
+    ~visit(addition: Addition): T
+    ~visit(substratcion: Substraction): T
+    ~visit(association: Association): T
+    ~visit(calculateAbsolute: CalculateAbsolute): T
+    ~visit(variable: Variable): T
+}
+
+class EvaluateVisitor{
+    - variablesMap: Map<String,Double>
+    + visit(power: Power): Double
+    + visit(root: Root): Double
+    + visit(multiplication: Multiplication): Double
+    + visit(division: Division): Double
+    + visit(addition: Addition): Double
+    + visit(substratcion: Substraction): Double
+    + visit(association: Association): Double
+    + visit(calculateAbsolute: CalculateAbsolute): Double
+    + visit(variable: Variable): Double
+}
+
+class GetChildrenVisitor{
+    - merge(listA: List<String>, listB: List<String>): List<String>
+    + visit(power: Power): Double
+    + visit(root: Root): Double
+    + visit(multiplication: Multiplication): Double
+    + visit(division: Division): Double
+    + visit(addition: Addition): Double
+    + visit(subtraction: Subtraction): Double
+    + visit(association: Association): Double
+    + visit(calculateAbsolute: CalculateAbsolute): Double
+    + visit(variable: Variable): Double
+}
+
+class PrintVisitor{
+        + visit(power: Power): String
+        + visit(root: Root): String
+        + visit(multiplication: Multiplication): String
+        + visit(division: Division): String
+        + visit(addition: Addition): String
+        + visit(subtraction: Substraction): String
+        + visit(association: Association): String
+        + visit(calculateAbsolute: CalculateAbsolute): String
+        + visit(variable: Variable): String
+}
+
+
+class ListVariablesVisitor{
+    - merge(listA: List<String>, listB: List<String>): List<String>
+    + visit(power: Power): List<String>
+    + visit(root: Root): List<String>
+    + visit(multiplication: Multiplication): List<String>
+    + visit(division: Division): List<String>
+    + visit(addition: Addition): List<String>
+    + visit(substratcion: Substraction): List<String>
+    + visit(association: Association): List<String>
+    + visit(calculateAbsolute: CalculateAbsolute): List<String>
+    + visit(variable: Variable): List<String>
+}
+
+CalculateAbsolute .u.|> VisitableFunction
+Power .u.|> VisitableFunction
+Root .u.|> VisitableFunction
+Multiplication .u.|> VisitableFunction
+Division .u.|> VisitableFunction
+Addition ..|> VisitableFunction
+Subtraction ..|> VisitableFunction
+Variable ..|> VisitableFunction
+Association ..|> VisitableFunction
+
+EvaluateVisitor .u.|> Visitor
+PrintVisitor .u.|> Visitor
+GetChildrenVisitor ..|> Visitor
+ListVariablesVisitor ..|> Visitor
+
+Visitor --l--> VisitableFunction
+
+@enduml
