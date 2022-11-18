@@ -1,4 +1,6 @@
-package edu.austral.ingsis.math.composite;
+package edu.austral.ingsis.math.composite.classes;
+
+import edu.austral.ingsis.math.composite.interfaces.Function;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,24 +8,24 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Division implements Function{
+public class Multiplication implements Function {
 
     private final Function functionA;
     private final Function functionB;
 
-    public Division(Function functionA, Function functionB) {
+    public Multiplication(Function functionA, Function functionB) {
         this.functionA = functionA;
         this.functionB = functionB;
     }
 
     @Override
     public double evaluate(Map<String, Double> map) {
-        return map.get(functionA) / map.get(functionB);
+        return map.get(functionA) * map.get(functionB);
     }
 
     @Override
     public String print() {
-        return functionA.print() + "/" + functionB.print();
+        return functionA.print() + "*" + functionB.print();
     }
 
     @Override

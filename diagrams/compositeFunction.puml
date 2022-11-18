@@ -8,7 +8,7 @@ interface Function{
 }
 
 class Variable{
-    -var: String
+    -variable: String
     +evaluate(Map<String,Double> map): Double
     +getChildren(List<String> list): List<String>
     +listVariables(List<String> list): List<String>
@@ -84,6 +84,13 @@ class Association{
     +print():  String
 }
 
+class Value{
+    +value: Double
+    +evaluate(Map<String,Double> map): Double
+    +getChildren(List<String> list): List<String>
+    +listVariables(List<String> list): List<String>
+    +print():  String
+}
 
 
 
@@ -95,6 +102,7 @@ Division .u.|> Function
 Addition ..|> Function
 Subtraction ..|> Function
 Variable ..|> Function
+Value ..|> Function
 Association ..|> Function
 CalculateAbsolute *-- Function
 Power *-- Function

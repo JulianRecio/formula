@@ -1,4 +1,6 @@
-package edu.austral.ingsis.math.composite;
+package edu.austral.ingsis.math.composite.classes;
+
+import edu.austral.ingsis.math.composite.interfaces.Function;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Variable implements Function{
+public class Variable implements Function {
 
     private final String name;
 
@@ -26,7 +28,9 @@ public class Variable implements Function{
 
     @Override
     public List<String> getChildren(List<String> list) {
-        return list;
+        List <String> copyList = new ArrayList<>();
+        copyList.add(name);
+        return copyList;
     }
 
     @Override
@@ -35,6 +39,5 @@ public class Variable implements Function{
         namesList.add(name);
         return Stream.concat(variablesList.stream(),namesList.stream()).collect(Collectors.toList());
     }
-
 
 }

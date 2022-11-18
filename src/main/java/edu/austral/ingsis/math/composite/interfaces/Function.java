@@ -1,4 +1,4 @@
-package edu.austral.ingsis.math.composite;
+package edu.austral.ingsis.math.composite.interfaces;
 
 import java.util.List;
 import java.util.Map;

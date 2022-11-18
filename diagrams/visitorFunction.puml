@@ -6,9 +6,15 @@ interface VisitableFunction{
 }
 
 class Variable{
-    -var: String
-    +getVarName(): String
-    +accept(visitor: Visitor<T>): T
+    -variable: String
+    +getVariableName(): String
+    +acceptVisit(visitor: Visitor<T>): T
+}
+
+class Value{
+    -value: double
+    +getValue(): String
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 class Power{
@@ -16,13 +22,13 @@ class Power{
     -functionB: VisitableFunction
     +getFunctionA(): VisitableFunction
     +getFunctionB(): VisitableFunction
-    +accept(visitor: Visitor<T>): T
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 class Root{
     -functionA: VisitableFunction
     +getFunctionA(): VisitableFunction
-    +accept(visitor: Visitor<T>): T
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 class Multiplication{
@@ -30,7 +36,7 @@ class Multiplication{
     -functionB: VisitableFunction
     +getFunctionA(): VisitableFunction
     +getFunctionB(): VisitableFunction
-    +accept(visitor: Visitor<T>): T
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 class Division{
@@ -38,7 +44,7 @@ class Division{
     -functionB: VisitableFunction
     +getFunctionA(): VisitableFunction
     +getFunctionB(): VisitableFunction
-    +accept(visitor: Visitor<T>): T
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 class Addition{
@@ -46,7 +52,7 @@ class Addition{
     -functionB: VisitableFunction
     +getFunctionA(): VisitableFunction
     +getFunctionB(): VisitableFunction
-    +accept(visitor: Visitor<T>): T
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 class Subtraction{
@@ -54,19 +60,19 @@ class Subtraction{
     -functionB: VisitableFunction
     +getFunctionA(): VisitableFunction
     +getFunctionB(): VisitableFunction
-    +accept(visitor: Visitor<T>): T
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 class CalculateAbsolute{
     -function: VisitableFunction
     +getFunction(): VisitableFunction
-    +accept(visitor: Visitor<T>): T
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 class Association{
     -function: VisitableFunction
     +getFunction(): VisitableFunction
-    +accept(visitor: Visitor<T>): T
+    +acceptVisit(visitor: Visitor<T>): T
 }
 
 interface Visitor{
@@ -79,6 +85,7 @@ interface Visitor{
     ~visit(association: Association): T
     ~visit(calculateAbsolute: CalculateAbsolute): T
     ~visit(variable: Variable): T
+    ~visit(value: Value): T
 }
 
 class EvaluateVisitor{
@@ -92,6 +99,7 @@ class EvaluateVisitor{
     + visit(association: Association): Double
     + visit(calculateAbsolute: CalculateAbsolute): Double
     + visit(variable: Variable): Double
+    + visit(value: Value): Double
 }
 
 class GetChildrenVisitor{
@@ -105,6 +113,7 @@ class GetChildrenVisitor{
     + visit(association: Association): Double
     + visit(calculateAbsolute: CalculateAbsolute): Double
     + visit(variable: Variable): Double
+    + visit(value: Value): Double
 }
 
 class PrintVisitor{
@@ -117,6 +126,8 @@ class PrintVisitor{
         + visit(association: Association): String
         + visit(calculateAbsolute: CalculateAbsolute): String
         + visit(variable: Variable): String
+        + visit(value: Value): List<String>
+
 }
 
 
@@ -131,6 +142,7 @@ class ListVariablesVisitor{
     + visit(association: Association): List<String>
     + visit(calculateAbsolute: CalculateAbsolute): List<String>
     + visit(variable: Variable): List<String>
+    + visit(value: Value): List<String>
 }
 
 CalculateAbsolute .u.|> VisitableFunction
@@ -142,12 +154,13 @@ Addition ..|> VisitableFunction
 Subtraction ..|> VisitableFunction
 Variable ..|> VisitableFunction
 Association ..|> VisitableFunction
+Value ..|> VisitableFunction
 
 EvaluateVisitor .u.|> Visitor
 PrintVisitor .u.|> Visitor
 GetChildrenVisitor ..|> Visitor
 ListVariablesVisitor ..|> Visitor
 
-Visitor --l--> VisitableFunction
+Visitor ---l---> VisitableFunction
 
 @enduml

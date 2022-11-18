@@ -1,10 +1,12 @@
-package edu.austral.ingsis.math.composite;
+package edu.austral.ingsis.math.composite.classes;
+
+import edu.austral.ingsis.math.composite.interfaces.Function;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Asociation implements Function{
+public class Asociation implements Function {
 
     private final Function function;
 
