@@ -95,7 +95,7 @@ class EvaluateVisitor{
     + visit(multiplication: Multiplication): Double
     + visit(division: Division): Double
     + visit(addition: Addition): Double
-    + visit(substratcion: Substraction): Double
+    + visit(subtratcion: Subtraction): Double
     + visit(association: Association): Double
     + visit(calculateAbsolute: CalculateAbsolute): Double
     + visit(variable: Variable): Double
@@ -138,7 +138,7 @@ class ListVariablesVisitor{
     + visit(multiplication: Multiplication): List<String>
     + visit(division: Division): List<String>
     + visit(addition: Addition): List<String>
-    + visit(substratcion: Substraction): List<String>
+    + visit(subtratcion: Subtraction): List<String>
     + visit(association: Association): List<String>
     + visit(calculateAbsolute: CalculateAbsolute): List<String>
     + visit(variable: Variable): List<String>

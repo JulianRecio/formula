@@ -16,7 +16,12 @@ public class Asociation implements Function {
 
     @Override
     public double evaluate(Map<String, Double> map) {
-        return map.get(function);
+        return function.evaluate(map);
+    }
+
+    @Override
+    public double evaluate() {
+        return function.evaluate();
     }
 
     @Override

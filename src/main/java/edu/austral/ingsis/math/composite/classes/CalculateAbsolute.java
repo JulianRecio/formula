@@ -17,7 +17,12 @@ public class CalculateAbsolute implements Function {
 
     @Override
     public double evaluate(Map<String, Double> map) {
-        return Math.abs(map.get(function));
+        return Math.abs(function.evaluate(map));
+    }
+
+    @Override
+    public double evaluate() {
+        return Math.abs(function.evaluate());
     }
 
     @Override

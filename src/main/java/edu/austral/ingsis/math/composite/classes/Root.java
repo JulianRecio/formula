@@ -24,6 +24,11 @@ public class Root implements Function {
     }
 
     @Override
+    public double evaluate() {
+        return Math.pow(functionA.evaluate(), 1 / functionB.evaluate());
+    }
+
+    @Override
     public String print() {
         return functionA.print() + "^(1/" + functionB.print() + ")" ;
     }

@@ -22,6 +22,11 @@ public class Variable implements Function {
     }
 
     @Override
+    public double evaluate() {
+        return 0;
+    }
+
+    @Override
     public String print() {
         return name;
     }

@@ -20,7 +20,12 @@ public class Addition implements Function {
 
     @Override
     public double evaluate(Map<String, Double> map) {
-        return map.get(functionA) + map.get(functionB);
+        return functionA.evaluate(map) + functionB.evaluate(map);
+    }
+
+    @Override
+    public double evaluate() {
+        return functionA.evaluate() + functionB.evaluate();
     }
 
     @Override

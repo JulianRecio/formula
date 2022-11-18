@@ -20,6 +20,11 @@ public class Value implements Function {
     }
 
     @Override
+    public double evaluate() {
+        return this.value;
+    }
+
+    @Override
     public String print() {
         return (value % 1 != 0) ? Double.toString(value) : Integer.toString((int) value);
     }

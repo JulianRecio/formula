@@ -21,7 +21,12 @@ public class Power implements Function {
 
     @Override
     public double evaluate(Map<String, Double> map) {
-        return Math.pow(map.get(functionA),map.get(functionB));
+        return Math.pow(functionA.evaluate(map),functionB.evaluate(map));
+    }
+
+    @Override
+    public double evaluate() {
+        return Math.pow(functionA.evaluate(),functionB.evaluate());
     }
 
     @Override

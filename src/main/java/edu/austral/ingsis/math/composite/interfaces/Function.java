@@ -5,6 +5,7 @@ import java.util.Map;
 
 public interface Function {
     double evaluate(Map<String, Double> map);
+    double evaluate();
     String print();
     List<String> getChildren(List<String> list);
     List<String> listVariables(List<String> list);
