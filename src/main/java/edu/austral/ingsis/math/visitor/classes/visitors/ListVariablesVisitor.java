@@ -1,12 +1,13 @@
-package edu.austral.ingsis.math.visitor.classes;
+package edu.austral.ingsis.math.visitor.classes.visitors;
 
+import edu.austral.ingsis.math.visitor.classes.*;
 import edu.austral.ingsis.math.visitor.interfaces.Visitor;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class getChildrenVisitor implements Visitor<List<String>> {
+public class ListVariablesVisitor implements Visitor<List<String>> {
 
     private List<String> merge(List<String> listA, List<String> listB) {
         List<String> merged = new ArrayList<>();
@@ -62,7 +63,7 @@ public class getChildrenVisitor implements Visitor<List<String>> {
 
     @Override
     public List<String> visit(Value value) {
-        return new ArrayList<>(Collections.singleton(Double.toString(value.getValue())));
+        return new ArrayList<>();
     }
 
 

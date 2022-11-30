@@ -1,6 +1,7 @@
 package edu.austral.ingsis.math.visitor.interfaces;
 
 import edu.austral.ingsis.math.visitor.classes.*;
+import edu.austral.ingsis.math.visitor.classes.CalculateAbsolute;
 
 public interface Visitor<T> {
     T visit(Power power);

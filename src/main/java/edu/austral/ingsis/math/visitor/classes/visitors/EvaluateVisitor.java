@@ -1,5 +1,6 @@
-package edu.austral.ingsis.math.visitor.classes;
+package edu.austral.ingsis.math.visitor.classes.visitors;
 
+import edu.austral.ingsis.math.visitor.classes.*;
 import edu.austral.ingsis.math.visitor.interfaces.Visitor;
 
 import java.util.Map;

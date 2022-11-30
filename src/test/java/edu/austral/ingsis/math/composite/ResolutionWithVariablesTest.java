@@ -1,6 +1,11 @@
 package edu.austral.ingsis.math.composite;
 
+import edu.austral.ingsis.math.composite.classes.*;
 import org.junit.Test;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -13,7 +18,9 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction1() {
-        final Double result = 4d;
+        final Map<String,Double> map = new HashMap<>();
+        map.put("x",3.0);
+        final Double result = new Addition(new Value(1), new Variable("x")).evaluate(map);
 
         assertThat(result, equalTo(4d));
     }
@@ -23,7 +30,7 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction2() {
-        final Double result = 3d;
+        final Double result = new Division(new Value(12), new Variable("div")).evaluate(Collections.singletonMap("div", 4.0));
 
         assertThat(result, equalTo(3d));
     }
@@ -33,7 +40,10 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction3() {
-        final Double result = 12d;
+        final Map<String,Double> map = new HashMap<>();
+        map.put("x",3.0);
+        map.put("y",4.0);
+        final Double result = new Multiplication(new Division(new Value(9), new Variable("x")),new Variable("y")).evaluate(map);
 
         assertThat(result, equalTo(12d));
     }
@@ -43,7 +53,10 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction4() {
-        final Double result = 27d;
+        final Map<String,Double> map = new HashMap<>();
+        map.put("a",9.0);
+        map.put("b",3.0);
+        final Double result = new Power(new Division(new Value(27), new Variable("a")), new Variable("b")).evaluate(map);
 
         assertThat(result, equalTo(27d));
     }
@@ -53,7 +66,9 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction5() {
-        final Double result = 6d;
+        final Map<String,Double> map = new HashMap<>();
+        map.put("z",36.0);
+        final Double result = new Root(new Variable("z"),  new Value(2)).evaluate(map);
 
         assertThat(result, equalTo(6d));
     }
@@ -63,7 +78,9 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction6() {
-        final Double result = 0d;
+        final Map<String,Double> map = new HashMap<>();
+        map.put("value",8.0);
+        final Double result = new Substraction(new CalculateAbsolute(new Variable("value")), new Value(8)).evaluate(map);
 
         assertThat(result, equalTo(0d));
     }
@@ -73,7 +90,9 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction7() {
-        final Double result = 0d;
+        final Map<String,Double> map = new HashMap<>();
+        map.put("value",-8.0);
+        final Double result = new Substraction(new CalculateAbsolute(new Variable("value")), new Value(8)).evaluate(map);
 
         assertThat(result, equalTo(0d));
     }
@@ -83,7 +102,9 @@ public class ResolutionWithVariablesTest {
      */
     @Test
     public void shouldResolveFunction8() {
-        final Double result = 24d;
+        final Map<String,Double> map = new HashMap<>();
+        map.put("i",2.0);
+        final Double result = new Multiplication(new Substraction(new Value(5), new Variable("i")),new Value(8)).evaluate(map);
 
         assertThat(result, equalTo(24d));
     }
